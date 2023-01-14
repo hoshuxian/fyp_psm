@@ -103,7 +103,7 @@
       </li><!-- End student's profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/main">
         <i class="bi bi-newspaper"></i>
           <span>Top 20</span>
         </a>

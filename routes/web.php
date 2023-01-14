@@ -39,3 +39,8 @@ Route::get('/coordinator', function () {
 Route::get('/student', function () {
     return view('/student');
 });
+
+//Module Top 20
+Route::middleware(['auth'])->group(function(){
+    Route::resource('/main',top20Controller::class); 
+});

@@ -61,7 +61,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function hasRole(string $role): bool
+    public function hasRole(string $role): string
     {
         return $this->getAttribute('role') === $role;
     }

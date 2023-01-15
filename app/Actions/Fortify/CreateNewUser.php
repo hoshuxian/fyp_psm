@@ -3,6 +3,9 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\student;
+use App\Models\supervisor;
+use App\Models\coordinator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -24,12 +27,46 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
+             'role'=>['required'],
+            ])->validate();
 
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+        if (($input['role'])=='student')
+             {
+                $var = new student;
+                $var->studentName =$input['name'];
+                $var->stdemail= $input['email'];
+                $var->save();
+                return User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'password' =>Hash::make($input['password']),
+                    'role'=>$input['role'],
+                ]);
+             } else if (($input['role'])=='supervisor')
+             {
+                $var = new supervisor;
+                $var->svname= $input['name'];
+                $var->svemail= $input['email'];
+                $var->save();
+                return User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'password' =>Hash::make($input['password']),
+                    'role'=>$input['role'],
+                ]);
+             } else {
+                $var = new coordinator;
+                $var->coordinatorname= $input['name'];
+                $var->coordinatoremail= $input['email'];
+                $var->save();
+                return User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'password' =>Hash::make($input['password']),
+                    'role'=>$input['role'],
+                ]);
+             }
+
     }
 }
+

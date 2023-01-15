@@ -11,6 +11,16 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if(session()->has('successMsg'))
+                          <div class="alert alert-success">
+                              {{ session()->get('successMsg') }}
+                          </div>
+                        @endif
+                        @if(session()->has('FailedMsg'))
+    <div class="alert alert-danger" role="alert">
+        {{ session()->get('FailedMsg') }}
+    </div>
+@endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -24,6 +34,16 @@
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
+
+            <div class="mt-4">
+                <x-jet-label for="role" value="{{ __('Select Role Type') }}" />
+                <select id="role" name="role" class="block mt-1 w-full" required>
+                    <option value="student">student</option>
+                    <option value="supervisor">supervisor</option>
+                    <option value="coordinator">coordinator</option>
+                    </select>
+            </div>
+            
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">

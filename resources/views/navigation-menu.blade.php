@@ -12,9 +12,25 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <!--<x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @can('student')
+                    <x-jet-nav-link href="{{ route('myprofile') }}" :active="request()->routeIs('myprofile')">
+                    </x-jet-nav-link>
+                    @endif
+
+                    @can ('coordinator')
+                        <x-jet-nav-link href="{{ route('searchpsmtitle') }}" :active="request()->routeIs('searchpsmtitle')">
+                            {{ __('Lessons') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @can('supervisor')
+                        <x-jet-nav-link href="{{ route('svmyprofile') }}" :active="request()->routeIs('svmyprofile')">
+                            {{ __('Courses') }}
+                        </x-jet-nav-link>
+                    @endif-->
                 </div>
             </div>
 

@@ -115,7 +115,7 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/studentListS">
         <i class="bi bi-file-bar-graph"></i>
           <span>Report</span>
         </a>

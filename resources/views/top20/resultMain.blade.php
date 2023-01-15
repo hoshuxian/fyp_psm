@@ -36,14 +36,14 @@
                             <tr>
                               <th scope="row">{{ $loop->iteration }}</th>
                               <td>{{$data->studentName}}</td>
-                              <td>{{$data->studentID}}</td>
+                              <td>{{$data->id}}</td>
                               <td>{{$data->stdsupervisor}}</td>
                               <td>{{$data->stdpsmtitle}}</td>
                               <td>{{$data->PSM1_MARKS}}</td>
                               <td>{{$data->PSM2_MARKS}}</td>
                               <td>{{$data->industry_status}}</td>
                               
-                              <td>&nbsp&nbsp&nbsp<a href="{{ url('/main/' . $data->studentID. '/edit')}}" title="Edit"><button class="btn btn-outline-info" style="border-radius: 13px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Assign</button></a></td>
+                              <td>&nbsp&nbsp&nbsp<a href="{{ url('/main/' . $data->id. '/edit')}}" title="Edit"><button class="btn btn-outline-info" style="border-radius: 13px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Assign</button></a></td>
                             </tr>
                           @endforeach 
                           </tbody>

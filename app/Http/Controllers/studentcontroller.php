@@ -27,6 +27,7 @@ class studentcontroller extends Controller
 
     function mylist()
     {
+        
         $detaa = Student::where('stdemail','=',auth()->user()->email)->first();
             return view('\Student\myprofile', ['detaa' => $detaa]);
     }    

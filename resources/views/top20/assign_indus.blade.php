@@ -14,7 +14,7 @@
               <tr>
       <div class="card-body col-lg-6" style="margin-left:auto;margin-right:auto;">
     
-      <form class="row g-3" action="{{ url('/main/' .$result->studentID) }}" method="post">
+      <form class="row g-3" action="{{ url('/main/' .$result->id) }}" method="post">
           {!! csrf_field() !!}
             @method("PATCH")
                 <div class="col-12">
@@ -24,7 +24,7 @@
 
                 <div class="col-12">
                   <label class="form-label">Matric ID:</label>
-                  <input type="text" name="studentID" id="studentID" value="{{$result->studentID}}" class="form-control" disabled><br/>
+                  <input type="text" name="studentID" id="studentID" value="{{$result->id}}" class="form-control" disabled><br/>
                 </div>
 
                 <div class="col-12">

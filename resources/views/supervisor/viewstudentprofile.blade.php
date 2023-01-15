@@ -79,7 +79,11 @@ margin-right:150px;
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{$detaa->image}}" alt="Profile" class="rounded-circle">
+            @if($detaa->image)
+                        <img src="{{ $detaa->image }}" alt="Profile" class="rounded-circle">
+                        @else
+                        <img src="/uploads/default.jpg" alt="Profile" class="rounded-circle">
+                        @endif
               <h2>{{$detaa->studentName}}</h2>
               <div class="social-links mt-2">
                 <a href="http://www.twitter.com/" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -104,6 +108,7 @@ margin-right:150px;
                 </li>
 
               </ul>
+
               <div class="tab-content pt-2">
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Profile Details</h5>

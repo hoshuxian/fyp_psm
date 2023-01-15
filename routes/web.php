@@ -8,6 +8,7 @@ use App\Http\Controllers\coordinatorcontroller;
 use App\Http\Controllers\supervisorcontroller;
 use App\Http\Controllers\studentcontroller;
 use App\Http\Controllers\top20Controller;
+use App\Http\Controllers\reportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -163,4 +164,38 @@ Route::group(['middleware' => 'auth'], function() {
 //Module Top 20
 Route::middleware(['auth'])->group(function(){
     Route::resource('/main',top20Controller::class); 
+});
+
+//Generate Report
+//Middleware for generate report supervisor
+Route::middleware(['auth', 'checkIp','role:supervisor'])->group(function(){
+//Redirect to Supervisor student list view
+Route::get('/studentListS', function () {
+    return view('/report/studentListS');
+});
+//Redirect to Supervisor student report details view
+Route::get('/reportS', function () {
+    return view('/report/reportS');
+});
+Route::get('/studentListS', [reportController::class,'viewListS']);
+Route::get('/reportS/{resultID}/{psmType}', [reportController::class,'viewdataS']);
+});
+
+//Middleware for generate report coordinator
+Route::middleware(['auth', 'checkIp','role:coordinator'])->group(function(){
+//Redirect to coordinatoor student list view
+Route::get('/studentListC', function () {
+    return view('/report/studentListC');
+});
+//Redirect to coordinatoor reportOverview view
+Route::get('/reportOverview', function () {
+    return view('/report/reportOverview');
+});
+//Redirect to coordinatoor student report details view
+Route::get('/reportC', function () {
+    return view('/report/reportC');
+});
+Route::get('/studentListC', [reportController::class,'viewListC']);
+Route::get('/reportC/{resultID}/{psmType}', [reportController::class,'viewdataC']);
+Route::get('/reportOverview', [reportController::class,'calctotal']);
 });

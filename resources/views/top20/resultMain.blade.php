@@ -1,4 +1,4 @@
-@extends('layouts.supervisornav')
+@extends('supervisor')
 @section('content')
 
 @if(\Session::has('success'))

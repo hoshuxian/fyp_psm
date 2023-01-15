@@ -1,4 +1,4 @@
-@extends('layouts.supervisornav')
+@extends('supervisor')
 @section('content')
 
 <section class="section">

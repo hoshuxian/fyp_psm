@@ -158,3 +158,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/dashboard', \App\Http\Livewire\Frontend\Dashboard::class)->name('dashboard');
     });
 });*/
+
+//Module Top 20
+Route::middleware(['auth'])->group(function(){
+    Route::resource('/main',top20Controller::class); 
+});

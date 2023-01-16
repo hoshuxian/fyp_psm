@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 class top20Controller extends Controller
 {
     /**
@@ -15,14 +14,12 @@ class top20Controller extends Controller
     //display all student result
     public function index()
     {
-        $result = DB::table('students')
-                            ->join('psm2result', 'psm2result.studentID', '=', 'students.id')
+        $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
                             ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
-                            ->select('students.studentName','students.id','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS')
                             ->orderby('psm1result.totalMark', 'desc')
-                            ->get();
-        
-        return view('top20.resultMain')->with('result', $result);
+                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
+  
+        return view('top20.resultMain',compact('result'));
     }
 
     /**
@@ -33,13 +30,11 @@ class top20Controller extends Controller
     //generate top 20
     public function create()
     {
-        $result = DB::table('students')
-        ->join('psm2result', 'psm2result.studentID', '=', 'students.id')
-        ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
-        ->select('students.studentName','students.id','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS')
-        ->orderby('psm2result.totalMark', 'desc')
-        ->limit(20)
-        ->get();
+        $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
+                            ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
+                            ->orderby('psm2result.totalMark', 'desc')
+                            ->limit(20)
+                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
 
         return view('top20.resultMain',compact('result'))->with('success', 'Top 20 generate successfully!');
         
@@ -53,14 +48,13 @@ class top20Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id){
-        $result = DB::table('students')
-                            ->join('psm2result', 'psm2result.studentID', '=', 'students.id')
+    public function edit($studentID)
+    {
+        $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
                             ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
-                            ->select('students.studentName','students.id','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS')
-                            ->where('students.id',$id)
-                            ->first();
-                            return view('top20.assign_indus')->with('result', $result);
+                            ->where('students.studentID',$studentID)
+                            ->first(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
+                            return view('top20.assign_indus',compact('result'));
     }
 
     /**
@@ -70,9 +64,9 @@ class top20Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $studentID)
     {
-        $result = Student::find($id);
+        $result = Student::find($studentID);
         $result->industry_status = $request->input('industry_status');
         $result->save();
         return redirect('/main')->with('success', 'Student industry updated successfully!');

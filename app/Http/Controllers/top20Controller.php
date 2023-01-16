@@ -15,10 +15,8 @@ class top20Controller extends Controller
     public function index()
     {
         $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
-                            ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
                             ->orderby('students.studentID', 'asc')
-                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
-  
+                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS']);
         return view('top20.resultMain',compact('result'));
     }
     
@@ -31,11 +29,9 @@ class top20Controller extends Controller
     public function create()
     {
         $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
-                            ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
                             ->orderby('psm2result.totalMark', 'desc')
                             ->limit(20)
-                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
-
+                            ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','students.id']);
         return view('top20.resultMain',compact('result'))->with('success', 'Top 20 generate successfully!');
         
     }
@@ -48,12 +44,11 @@ class top20Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($studentID)
+    public function edit($id)
     {
         $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
-                            ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
-                            ->where('students.studentID',$studentID)
-                            ->first(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
+                            ->where('students.id',$id)
+                            ->first(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','students.id']);
                             return view('top20.assign_indus',compact('result'));
     }
 

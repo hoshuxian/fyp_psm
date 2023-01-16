@@ -24,7 +24,7 @@
 
                 <div class="col-12">
                   <label class="form-label">Matric ID:</label>
-                  <input type="text" name="studentID" id="studentID" value="{{$result->id}}" class="form-control" disabled><br/>
+                  <input type="text" name="studentID" id="studentID" value="{{$result->studentID}}" class="form-control" disabled><br/>
                 </div>
 
                 <div class="col-12">
@@ -37,10 +37,10 @@
                   <input type="text" name="stdpsmtitle" id="stdpsmtitle" value="{{$result->stdpsmtitle}}" class="form-control" disabled><br/>
                 </div>
 
-                <div class="col-12">
+                <!--<div class="col-12">
                   <label class="form-label">PSM 1 Marks:</label>
                   <input type="text" name="PSM1_MARKS" id="PSM1_MARKS" value="{{$result->PSM1_MARKS}}" class="form-control" disabled><br/>
-                </div>
+                </div>-->
                 <div class="col-12">
                   <label class="form-label">PSM 2 Marks:</label>
                   <input type="text" name="PSM2_MARKS" id="PSM2_MARKS"  value="{{$result->PSM2_MARKS}}" class="form-control" disabled><br/>

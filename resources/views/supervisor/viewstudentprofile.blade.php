@@ -158,6 +158,11 @@ margin-right:150px;
                     <div class="col-lg-9 col-md-8">{{$detaa->psmType}}</div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Industry Assign</div>
+                    <div class="col-lg-9 col-md-8">{{$detaa->industry_status}}</div>
+                  </div>
+
                 </div>
                 </div><!-- End Bordered Tabs -->
 @endforeach

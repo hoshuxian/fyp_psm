@@ -25,7 +25,7 @@
                     <th scope="col">Matric ID</th>
                     <th scope="col">Supervisor</th>
                     <th scope="col">FYP Title</th>
-                    <th scope="col">PSM 1 Mark</th>
+                    <!--<th scope="col">PSM 1 Mark</th>-->
                     <th scope="col">PSM 2 Mark</th>
                     <th scope="col">Industry</th>
                     <th scope="col">More Action</th>
@@ -36,10 +36,10 @@
                             <tr>
                               <th scope="row">{{ $loop->iteration }}</th>
                               <td>{{$data->studentName}}</td>
-                              <td>{{$data->id}}</td>
+                              <td>{{$data->studentID}}</td>
                               <td>{{$data->stdsupervisor}}</td>
                               <td>{{$data->stdpsmtitle}}</td>
-                              <td>{{$data->PSM1_MARKS}}</td>
+                              <!--<td>{{$data->PSM1_MARKS}}</td>-->
                               <td>{{$data->PSM2_MARKS}}</td>
                               <td>{{$data->industry_status}}</td>
                               

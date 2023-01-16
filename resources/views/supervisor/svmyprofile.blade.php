@@ -213,7 +213,6 @@ height:25px;
 
 
 <br><br>
-<button onclick="location.href='{{ url('/searchsvlist') }}'"  class="btn btn-primary" value="Back" style="margin-left:80%;">BACK</button>
 </html>
 
 

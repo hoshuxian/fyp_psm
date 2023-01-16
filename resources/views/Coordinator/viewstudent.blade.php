@@ -246,6 +246,13 @@ margin-right:150px;
                       </div>
                     </div>
 
+                    <div class="row mb-3">
+                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Industry Assign</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="status" type="text" class="form-control" id="status" value="{{$detaa->industry_status}}" required>
+                      </div>
+                    </div>
+
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>

@@ -92,7 +92,6 @@ function printElement(print)
                   </div>
                 </div>
                   <div class="col-sm-12">
-                    <a href="" onclick="printElement(print)" class="btn btn-primary" style="float:right;"><i class="bi bi-printer"></i> Print</a>
                 </div>
               </form><!-- End General Form Elements -->
 
@@ -103,5 +102,7 @@ function printElement(print)
     </nav>
     </div>
   </section>
+  <a href="" onclick="printElement(print)" class="btn btn-primary" style="margin-left:60%;" type="submit"><i class="bi bi-printer"></i> Print</a>
+  <button onclick="location.href='{{ url('/studentListS') }}'"  class="btn btn-primary" value="Back" style="margin-left:2%;">Back</button>
 </div>
 @endsection

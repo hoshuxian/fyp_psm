@@ -43,7 +43,7 @@ function printElement(print)
   <div>
     <div id="psm1">
       <br>
-      <nav class="d-flex justify-content-center" style="color:orange;text-align:center;">
+      <nav class="d-flex justify-content-center" style="color:orange;">
             <div class="col-9">
             <div class="card">
             <div class="card-body">

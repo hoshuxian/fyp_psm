@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Deadline extends Model
 {
     use HasFactory;
+    protected $table = 'deadlines';
+    protected $primaryKey = 'deadlineID';
+    protected $fillable = ['psmType', 'svDeadline', 'evDeadline'];
 }

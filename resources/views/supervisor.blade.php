@@ -101,7 +101,7 @@
       </li><!-- End Top 20 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/svMenu">
         <i class="ri-check-double-fill"></i>
           <span>Evaluation</span>
         </a>

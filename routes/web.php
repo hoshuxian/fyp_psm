@@ -203,6 +203,7 @@ Route::get('/reportOverview', [reportController::class,'calctotal']);
 
 // --------Manage Evaluation-------------------
 
+
 //middleware for checking authentication
 Route::group(['middleware' => 'auth'], function() {
     //middleware for checking ip address
@@ -232,4 +233,60 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
-// --------------------------------------------------
+// -------------Manage Rubric---------------------------
+
+
+Route::get('/viewRubric', function () {
+    return view('/rubric/viewRubric');
+});
+
+Route::get('/svRubric', function () {
+    return view('/rubric/svRubric');
+});
+
+Route::get('/studentRubric', function () {
+    return view('/rubric/studentRubric');
+});
+
+
+Route::get('/addRubric', function () {
+    return view('/rubric/addRubric');
+});
+
+Route::get('/updateRubric', function () {
+    return view('/rubric/updateRubric');
+});
+
+
+
+//middleware for checking authentication
+Route::group(['middleware' => 'auth'], function() {
+    //middleware for checking ip address
+    Route::group(['middleware'=>'checkIp'],function(){
+
+        //middleware for checking if user is a supervisor
+        Route::group(['middleware' => 'role:supervisor'], function() {
+            
+            Route::get('/svRubric', [rubricController::class,'svDisplay']);
+        });
+
+        //middleware for checking if user is a student
+        Route::group(['middleware' => 'role:student'], function() {
+            Route::get('/studentRubric', [rubricController::class,'stuDisplay']);
+        });
+        
+        //middleware for checking if user is a coordinator
+        Route::group(['middleware' => 'role:coordinator'], function() {
+            Route::get('/viewRubric', [rubricController::class,'coorDisplay']);
+            Route::get('/viewRubric/{rubricID}', 'App\Http\Controllers\rubricController@delete');
+            Route::get('/updateRubric/{rubricID}', 'App\Http\Controllers\rubricController@showUpdate');
+            
+            Route::post('addrubric','App\Http\Controllers\rubricController@saveData');
+            Route::post('editrubric','App\Http\Controllers\rubricController@updateData');
+            
+        });
+    });
+});
+
+
+//=====================================================================

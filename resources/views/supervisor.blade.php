@@ -108,7 +108,7 @@
       </li><!-- End Evaluation Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/svRubric">
           <i class="bi bi-card-list"></i>
           <span>Rubric</span>
         </a>

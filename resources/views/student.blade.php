@@ -93,7 +93,7 @@
       </li><!-- End supervisor's profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/studentRubric">
           <i class="bi bi-card-list"></i>
           <span>Rubric</span>
         </a>

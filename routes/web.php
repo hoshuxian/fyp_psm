@@ -59,7 +59,7 @@ Route::get('login', function () {
 })->name('login');
 
 
-//Manage User
+// --------Manage User-------------------
     // 1) Coordinator
         // create new student's profile
         Route::get('/createnewstudent', function () {
@@ -153,22 +153,14 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
-/*Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    \
-    Route::prefix('backend')->name('backend.')->middleware(['can:access-backend'])->group(function () {
-            Route::get('/dashboard', \App\Http\Livewire\Backend\Dashboard::class)->name('dashboard');
-        });
-    Route::prefix('frontend')->name('frontend.')->middleware(['can:access-frontend'])->group(function () {
-        Route::get('/dashboard', \App\Http\Livewire\Frontend\Dashboard::class)->name('dashboard');
-    });
-});*/
 
-//Module Top 20
-Route::middleware(['auth'])->group(function(){
-    Route::resource('/main',top20Controller::class); 
+
+// --------Generate Top 20-------------------
+Route::middleware(['auth','role:supervisor'])->group(function(){
+    Route::resource('/main',top20Controller::class)->middleware('CrossHttp');
 });
 
-//Generate Report
+// --------Generate Report-------------------t
 //Middleware for generate report supervisor
 Route::middleware(['auth', 'checkIp','role:supervisor'])->group(function(){
 //Redirect to Supervisor student list view
@@ -201,6 +193,7 @@ Route::get('/studentListC', [reportController::class,'viewListC']);
 Route::get('/reportC/{resultID}/{psmType}', [reportController::class,'viewdataC']);
 Route::get('/reportOverview', [reportController::class,'calctotal']);
 });
+
 
 // --------Manage Evaluation-------------------
 

@@ -157,6 +157,11 @@ margin-right:150px;
                     <div class="col-lg-9 col-md-8">{{$detaa->psmType}}</div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Industry Status</div>
+                    <div class="col-lg-9 col-md-8">{{$detaa->industry_status}}</div>
+                  </div>
+
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -248,13 +253,6 @@ margin-right:150px;
                       <option value = "PSM2"> PSM 2</option>
                       <option value = "PTA"> PTA</option>
                       </select>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Industry Assign</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="status" type="text" class="form-control" id="status" value="{{$detaa->industry_status}}" required>
                       </div>
                     </div>
 

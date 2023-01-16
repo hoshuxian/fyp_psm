@@ -127,13 +127,6 @@
       </li><!-- End Generate Report Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" href="/logout">
         <i class="ri-logout-box-line"></i>
           <span>Logout</span>

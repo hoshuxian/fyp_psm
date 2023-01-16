@@ -20,7 +20,7 @@ return new class extends Migration
             $table->String("goodDesc");
             $table->String("modDesc");
             $table->String("weakDesc");
-            $table->String("verywealDesc");
+            $table->String("veryweakDesc");
             $table->String("failDesc");
             $table->String("weight");
             $table->String("rubricType");

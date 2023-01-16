@@ -106,7 +106,7 @@
       </li><!-- End supervisor's profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="/deadline">
         <i class="bi bi-calendar2-check"></i>
           <span>Deadline</span>
         </a>

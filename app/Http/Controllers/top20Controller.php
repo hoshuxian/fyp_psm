@@ -11,17 +11,17 @@ class top20Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //display all student result
+    //display all student result (order by matric id)
     public function index()
     {
         $result = Student::join('psm2result', 'psm2result.studentID', '=', 'students.id')
                             ->join('psm1result', 'psm1result.studentID', '=', 'students.id')
-                            ->orderby('psm1result.totalMark', 'desc')
+                            ->orderby('students.studentID', 'asc')
                             ->get(['students.studentName','students.studentID','students.stdsupervisor', 'students.stdpsmtitle','students.industry_status','psm2result.totalMark as PSM2_MARKS','psm1result.totalMark as PSM1_MARKS']);
   
         return view('top20.resultMain',compact('result'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -10,6 +10,7 @@ use App\Http\Controllers\studentcontroller;
 use App\Http\Controllers\top20Controller;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\rubricController;
 
 /*
 |--------------------------------------------------------------------------

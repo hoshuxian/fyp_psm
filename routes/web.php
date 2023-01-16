@@ -9,6 +9,7 @@ use App\Http\Controllers\supervisorcontroller;
 use App\Http\Controllers\studentcontroller;
 use App\Http\Controllers\top20Controller;
 use App\Http\Controllers\reportController;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -199,3 +200,36 @@ Route::get('/studentListC', [reportController::class,'viewListC']);
 Route::get('/reportC/{resultID}/{psmType}', [reportController::class,'viewdataC']);
 Route::get('/reportOverview', [reportController::class,'calctotal']);
 });
+
+// --------Manage Evaluation-------------------
+
+//middleware for checking authentication
+Route::group(['middleware' => 'auth'], function() {
+    //middleware for checking ip address
+    Route::group(['middleware'=>'checkIp'],function(){
+
+        //middleware for checking if user is a supervisor
+        Route::group(['middleware' => 'role:supervisor'], function() {
+
+            //Routes for supervisors view pages
+            Route::get('/svMenu', [EvaluationController::class, 'svMenu']);
+            Route::get('/svView', [EvaluationController::class, 'svView']);
+            Route::get('/svEdit/{resultID}/{psmType}', [EvaluationController::class, 'svEdit']);
+            Route::post('/updateSvMarks/{resultID}/{psmType}', [EvaluationController::class, 'updateSvMarks']);
+
+            //Routes for supervisors as the evauator view pages
+            Route::get('/evView', [EvaluationController::class, 'evView']);
+            Route::get('/evEdit/{resultID}/{psmType}', [EvaluationController::class, 'evEdit']);
+            Route::post('/updateEvMarks/{resultID}/{psmType}', [EvaluationController::class, 'updateEvMarks']);
+       });
+
+       //middleware for checking if user is coordinator
+        Route::group(['middleware' => 'role:coordinator'], function() {
+            //Routes for set deadlines
+            Route::get('/deadline', [EvaluationController::class, 'deadline']);
+            Route::post('/deadline', [EvaluationController::class, 'storeDeadline']);
+        });
+    });
+});
+
+// --------------------------------------------------

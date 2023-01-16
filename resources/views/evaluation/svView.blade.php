@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('supervisor')
 
 @section('table')
@@ -129,7 +130,4 @@
   </div><!-- End Default Tabs -->
 
 </div><br>
-
-
-
 @endsection

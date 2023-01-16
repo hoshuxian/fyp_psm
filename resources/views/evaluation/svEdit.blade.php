@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('supervisor')
 
 
@@ -89,5 +90,4 @@
     return false;
   }
 </script>
-
 @endsection

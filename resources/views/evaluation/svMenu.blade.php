@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('supervisor')
 
 
@@ -64,5 +65,4 @@ Evaluate PTA as supervisor before <b>{{ $deadlinePta->svDeadline }}</b> and as e
     </section>
 <br>
 </center>
-
 @endsection

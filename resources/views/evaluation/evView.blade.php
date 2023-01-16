@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('supervisor')
 
 @section('table')
@@ -108,5 +109,4 @@
     </div>
   </div>
 </div><br><br>
-
 @endsection
